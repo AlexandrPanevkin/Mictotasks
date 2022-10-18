@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {NewComponent} from "./NewComponent";
 import {students} from "./students";
@@ -14,16 +14,24 @@ function App() {
     //     {manufacturer: 'Audi', model: 'rs6'}
     // ]
 
+    // const Button1Foo=(subscriber: string, age: number)=>{
+    //     console.log(subscriber, age)
+    // }
+    // const Button2Foo=(subscriber: string)=>{
+    //     console.log(subscriber)
+    // }
+    // const Button3Foo=()=>{
+    //     console.log('im button')
+    // }
 
 
-    const Button1Foo=(subscriber: string, age: number)=>{
-        console.log(subscriber, age)
+    let[a, setA]=useState(1)
+    const onClickHandler=()=>{
+        setA(++a)
     }
-    const Button2Foo=(subscriber: string)=>{
-        console.log(subscriber)
-    }
-    const Button3Foo=()=>{
-        console.log('im button')
+   useState(1)
+    const onClickHandlerZero=()=>{
+        setA(a=0)
     }
 
     return (
@@ -33,11 +41,15 @@ function App() {
                 {/*<Cars cars={topCars} />*/}
             </div>
             <div>
-                <Button name={'YoutubeChanel-1'} callBack={()=>Button1Foo("Im Vasya", 21)}/>
-                <Button name={'YoutubeChanel-2'} callBack={()=>Button2Foo("Im Ivan")}/>
-                <Button name={'Im Button'} callBack={Button3Foo}/>
+                {/*<Button name={'YoutubeChanel-1'} callBack={()=>Button1Foo("Im Vasya", 21)}/>*/}
+                {/*<Button name={'YoutubeChanel-2'} callBack={()=>Button2Foo("Im Ivan")}/>*/}
+                {/*<Button name={'Im Button'} callBack={Button3Foo}/>*/}
             </div>
-
+            <div>
+                <h1>{a}</h1>
+                <button onClick={onClickHandler}>number</button>
+                <button onClick={onClickHandlerZero}>0</button>
+            </div>
 
         </>
     );
