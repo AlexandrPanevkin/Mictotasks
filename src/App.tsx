@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import './App.css';
-import {NewComponent} from "./NewComponent";
-import {students} from "./students";
-import {Cars} from "./Cars";
-import {Button} from "./Button";
-import {Money} from "./Money";
+import {NewComponent} from "./Components/NewComponent";
+import {students} from "./Components/students";
+import {Cars} from "./Components/Cars";
+import {Button} from "./Components/Button";
+import {Money} from "./Components/Money";
+import {FullInput} from "./Components/FullInput";
+import {ButtonInput} from "./Components/ButtonInput";
+import {Input} from "./Components/Input";
 
 
 export type filterType = 'All' | "RUBLS" | "Dollars"
@@ -48,7 +51,24 @@ function App() {
         {banknots: 'RUBLS', value: 50, number: ' v1234567890'},
     ])
 
+    let [message, setMessage] = useState([
+        {message: "message1"},
+        {message: "message2"},
+        {message: "message3"},
 
+    ])
+
+    const addMessage = (title: string) => {
+        let newMessage = {message: title};
+        setMessage([newMessage, ...message])
+    }
+
+    let [title, setTitle] = useState('')
+
+    const callbackButtonHandler = () => {
+        addMessage(title)
+        setTitle('')
+    }
 
     return (
         <>
@@ -67,10 +87,27 @@ function App() {
                 {/*<button onClick={onClickHandlerZero}>0</button>*/}
             </div>
             <div>
-                <Money money={money}/>
+                {/*<Money money={money}/>*/}
             </div>
-
-
+            <div>
+                {/*<FullInput addMessage={addMessage}/>*/}
+                {/*{message.map((el, index) => {*/}
+                {/*    return (*/}
+                {/*        <div key={index}>{el.message}</div>*/}
+                {/*    )*/}
+                {/*})}*/}
+            </div>
+            <div>
+                <Input title={title} setTitle={setTitle}/>
+                <ButtonInput
+                    name={'+'}
+                    callback={callbackButtonHandler}/>
+                {message.map((el, index) => {
+                    return (
+                        <div key={index}>{el.message}</div>
+                    )
+                })}
+            </div>
         </>
     );
 }

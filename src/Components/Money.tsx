@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {filterType} from "./App";
+import {filterType} from "../App";
 type MoneyPropsType = {
     banknots: string
     value: number
